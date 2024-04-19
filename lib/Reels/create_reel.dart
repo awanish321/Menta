@@ -31,7 +31,7 @@ class _CreateReelState extends State<CreateReel> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 50),
             child: Column(
               children: [
                 Row(
@@ -73,13 +73,11 @@ class _CreateReelState extends State<CreateReel> {
                         "assets/Layer_1.svg",
                         height: 20,
                         width: 20,
-                        color: textColor,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 30),
+                const SizedBox(height: 40),
                 Container(
                   height: 180,
                   width: 400,
@@ -97,19 +95,22 @@ class _CreateReelState extends State<CreateReel> {
                       children: [
                         Column(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 20),
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: LinearGradient(colors: [
-                                    Color(0xFFAD1457),
-                                    Colors.redAccent
-                                  ])),
-                              child: SvgPicture.asset(
-                                "assets/ph_camera-bold.svg",
-                                clipBehavior: Clip.hardEdge,
-                                // fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap:(){},
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 20),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: LinearGradient(colors: [
+                                      Color(0xFFAD1457),
+                                      Colors.redAccent
+                                    ])),
+                                child: SvgPicture.asset(
+                                  "assets/ph_camera-bold.svg",
+                                  clipBehavior: Clip.hardEdge,
+                                  // fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 8.0),
@@ -130,17 +131,20 @@ class _CreateReelState extends State<CreateReel> {
                         const SizedBox(width: 35),
                         Column(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 20),
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: LinearGradient(colors: [
-                                    Color(0xFFAD1457),
-                                    Colors.redAccent
-                                  ])),
-                              child: SvgPicture.asset(
-                                "assets/ph_video-bold.svg",
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 20),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: LinearGradient(colors: [
+                                      Color(0xFFAD1457),
+                                      Colors.redAccent
+                                    ])),
+                                child: SvgPicture.asset(
+                                  "assets/ph_video-bold.svg",
+                                ),
                               ),
                             ),
                             const SizedBox(height: 8.0),
@@ -161,18 +165,21 @@ class _CreateReelState extends State<CreateReel> {
                         const SizedBox(width: 35),
                         Column(
                           children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 20),
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: LinearGradient(colors: [
-                                    Color(0xFFAD1457),
-                                    Colors.redAccent
-                                  ])),
-                              child: SvgPicture.asset(
-                                "assets/icon-park-outline_picture.svg",
-                                // fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 20),
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: LinearGradient(colors: [
+                                      Color(0xFFAD1457),
+                                      Colors.redAccent
+                                    ])),
+                                child: SvgPicture.asset(
+                                  "assets/icon-park-outline_picture.svg",
+                                  // fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 8.0),

@@ -1,16 +1,13 @@
-class HotSkillsModel {
-  final String label;
-  final String image;
+class HotSkill {
+  final String name;
+  final String imagePath;
 
-  HotSkillsModel({
-    required this.label,
-    required this.image,
-  });
+  HotSkill({required this.name, required this.imagePath});
 
-  factory HotSkillsModel.fromJson(Map<String, dynamic> json) {
-    return HotSkillsModel(
-      label: json['label'] ?? '',
-      image: json['image'] ?? '',
+  factory HotSkill.fromMap(Map<String, dynamic> data) {
+    return HotSkill(
+      name: data['name'] ?? '',
+      imagePath: data['imagePath'] ?? '',
     );
   }
 }

@@ -1,18 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:courses/Menta/home/hot_skills/model/hot_skills_model.dart';
 
-class HotSkillsRepository{
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+import '../model/hot_skills_model.dart';
 
-  Future<List<HotSkillsModel>> fetchHotSkills() async {
-    try{
-      final hotSkillsSnapshot = await firestore.collection("HotSkills").get();
-      final hotSkills = hotSkillsSnapshot.docs.map((doc) => HotSkillsModel.fromJson(doc.data())).toList();
+class HotSkillsRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-      return hotSkills;
-    }catch (e) {
-      throw Exception("Failed to fetch HotSkills : $e");
-    }
-
+  Future<List<HotSkill>> fetchHotSkills() async {
+    final snapshot = await _firestore.collection('HotSkills').limit(8).get();
+    return snapshot.docs.map((doc) => HotSkill.fromMap(doc.data())).toList();
   }
 }

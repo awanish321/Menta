@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 part 'industry_event.dart';
 part 'industry_state.dart';
@@ -19,7 +20,7 @@ class IndustryBloc extends Bloc<IndustryEvent, IndustryState> {
     emit(IndustryLoading());
 
     try {
-      print('Fetching industries from Firestore...');
+      debugPrint('Fetching industries from Firestore...');
       final QuerySnapshot querySnapshot =
       await _firestore.collection('Industry').get();
 
@@ -30,10 +31,10 @@ class IndustryBloc extends Bloc<IndustryEvent, IndustryState> {
       })
           .toList();
 
-      print('Industries fetched: $industries');
+      debugPrint('Industries fetched: $industries');
       emit(IndustryLoaded(industries: industries));
     } catch (e) {
-      print('Error fetching industries: $e');
+      debugPrint('Error fetching industries: $e');
       emit(IndustryError(error: e.toString()));
     }
   }

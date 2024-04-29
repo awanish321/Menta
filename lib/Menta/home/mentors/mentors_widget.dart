@@ -1,10 +1,7 @@
 import 'package:courses/Menta/home/mentors/repository/mentors_repository.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import '../components/book_now_widget.dart';
 import '../components/mentors_details_page.dart';
 import 'bloc/mentors_bloc.dart';
 import 'model/mentors_model.dart';
@@ -131,12 +128,12 @@ class _MentorsScreenState extends State<MentorsScreen> {
                                     mentor.role,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(fontSize: 13),
+                                    style: const TextStyle(fontSize: 14),
                                     textAlign: TextAlign.center,
                                   ),
-                                  const Gap(4),
+                                  // const Gap(4),
                                   const Divider(),
-                                  const Gap(4),
+                                  // const Gap(4),
                                   Expanded(
                                     child: Row(
                                       mainAxisAlignment:
@@ -185,39 +182,6 @@ class _MentorsScreenState extends State<MentorsScreen> {
                                             ],
                                           ),
                                         ),
-                                        InkWell(
-                                          borderRadius:
-                                          BorderRadius.circular(10),
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                const BookNowWidget(),
-                                              ),
-                                            );
-                                          },
-                                          child: Expanded(
-                                            child: Container(
-                                              height: 40,
-                                              width: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.blue.withOpacity(0.2),
-                                                borderRadius:
-                                                BorderRadius.circular(10),
-                                              ),
-                                              child: const Center(
-                                                child: Text(
-                                                  "Book Now",
-                                                  style: TextStyle(
-                                                    fontSize: 10,
-                                                    color: Colors.blue,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
                                       ],
                                     ),
                                   ),

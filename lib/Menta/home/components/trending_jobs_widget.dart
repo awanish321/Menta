@@ -63,42 +63,29 @@ class _TrendingJobsScreenState extends State<TrendingJobsScreen> {
               style: TextStyle(fontSize: 18),
             ),
           ),
-          GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(12),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: _crossAxisCount(context),
-              mainAxisExtent: 120,
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 11,
-            ),
-            itemCount: showAllItems ? trendingJobs.length : 4,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: TrendingJobsTile(
-                  title: trendingJobs[index]['title']!,
-                  imageUrl: trendingJobs[index]['iconUrl']!,
-                ),
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    showAllItems = !showAllItems;
-                  });
-                },
-                child: Text(
-                  showAllItems ? 'See less' : 'See more',
-                  style: const TextStyle(fontSize: 12),
-                ),
+          SizedBox(
+            height: 270,
+            width: double.infinity,
+            child: GridView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(12),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 20,
+                childAspectRatio: 1.2,
               ),
+              itemCount: showAllItems ? trendingJobs.length : 8,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: TrendingJobsTile(
+                    title: trendingJobs[index]['title']!,
+                    imageUrl: trendingJobs[index]['iconUrl']!,
+                  ),
+                );
+              },
             ),
           ),
         ],

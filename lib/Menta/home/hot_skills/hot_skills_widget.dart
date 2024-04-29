@@ -203,11 +203,11 @@ class _HotSkillsScreenState extends State<HotSkillsScreen> {
     _hotskillsBloc = HotskillsBloc(_hotSkillsRepository)..add(FetchHotSkills());
   }
 
-  // @override
-  // void dispose() {
-  //   _hotskillsBloc.close();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _hotskillsBloc.close();
+    super.dispose();
+  }
 
 
   @override

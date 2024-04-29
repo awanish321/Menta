@@ -64,7 +64,7 @@ class _CreateReelState extends State<CreateReel> {
                 const SizedBox(height: 90,),
                 Stack(
                   children: [
-                    SvgPicture.asset("assets/Lamp.svg"),
+                    SvgPicture.asset("assets/Lamp.svg",),
                     Positioned(
                       bottom: 48,
                       right: 30,

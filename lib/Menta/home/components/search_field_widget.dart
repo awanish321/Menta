@@ -25,7 +25,7 @@ class SearchField extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.cyanAccent, width: 2),
               borderRadius: BorderRadius.circular(30),
             ),
-            prefixIcon: const Icon(Icons.search_outlined),
+            prefixIcon: const Icon(Icons.search_sharp),
             contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           ),
         ),

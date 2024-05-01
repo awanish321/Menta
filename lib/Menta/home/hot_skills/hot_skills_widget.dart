@@ -45,7 +45,7 @@ class HotSkillsWidget extends StatelessWidget {
                 builder: (context, constraints) {
                   final double availableWidth = constraints.maxWidth;
                   final double itemWidth = (availableWidth / 3);
-                  final double itemSpacing = (availableWidth - (itemWidth * 4)) / 13 + 20;
+                  final double itemSpacing = (availableWidth - (itemWidth * 4)) / 20 + 22;
                   final int itemCount = hotSkills.length;
 
                   return Wrap(
@@ -66,9 +66,11 @@ class HotSkillsWidget extends StatelessWidget {
     );
   }
 
+
+
   Widget buildSkillCapsule(HotSkill hotSkill) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         borderRadius: BorderRadius.circular(20),
@@ -78,8 +80,8 @@ class HotSkillsWidget extends StatelessWidget {
         children: [
           Image.network(
             hotSkill.imagePath,
-            width: 24,
-            height: 24,
+            width: 20,
+            height: 20,
             fit: BoxFit.cover,
           ),
           const SizedBox(width: 8),

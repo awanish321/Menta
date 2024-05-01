@@ -1,6 +1,7 @@
 import 'package:courses/Menta/home/trending_jobs/repository/trending_jobs_repository.dart';
 import 'package:courses/menta/home/components/trending_job_details_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/trending_jobs_bloc.dart';
 
@@ -27,6 +28,28 @@ class _TrendingJobsScreenState extends State<TrendingJobsScreen> {
     super.dispose();
   }
 
+  double _calculateAspectRatio(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      if (screenWidth < 600) {
+        return 1.2; // Portrait aspect ratio
+      } else {
+        return 1.9; // Landscape aspect ratio
+      }
+    } else {
+      return 1.5; // Landscape aspect ratio
+    }
+  }
+
+
+  double _calculateHeight(BuildContext context, double aspectRatio) {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return 270; // Height for portrait mode
+    } else {
+      return 170; // Height for landscape mode
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TrendingJobsBloc, TrendingJobsState>(
@@ -47,30 +70,37 @@ class _TrendingJobsScreenState extends State<TrendingJobsScreen> {
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
-                SizedBox(
-                  height: 270,
-                  width: double.infinity,
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.all(12),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: _crossAxisCount(context),
-                      mainAxisExtent: 120,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 11,
-                    ),
-                    itemCount:state.trendingJobs.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: TrendingJobsTile(
-                          title: state.trendingJobs[index].name,
-                          imageUrl: state.trendingJobs[index].image,
+
+                OrientationBuilder(
+                  builder: (context, orientation){
+                    double aspectRatio = _calculateAspectRatio(context);
+                    double height = _calculateHeight(context, aspectRatio);
+                    return SizedBox(
+                      height: height,
+                      width: double.infinity,
+                      child: GridView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.all(12),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: _crossAxisCount(context),
+                          mainAxisExtent: 120,
+                          mainAxisSpacing: 12,
+                          crossAxisSpacing: 11,
                         ),
-                      );
-                    },
-                  ),
+                        itemCount:state.trendingJobs.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: TrendingJobsTile(
+                              title: state.trendingJobs[index].name,
+                              imageUrl: state.trendingJobs[index].image,
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

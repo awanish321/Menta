@@ -4,31 +4,37 @@ import 'bloc/industry_bloc.dart';
 import 'industry_tile_widget.dart';
 
 class IndustryScreen extends StatefulWidget {
-  const IndustryScreen({Key? key}) : super(key: key);
+  const IndustryScreen({super.key});
 
   @override
   State<IndustryScreen> createState() => _IndustryScreenState();
 }
 
 class _IndustryScreenState extends State<IndustryScreen> {
-  bool showAllItems = false;
-
   @override
   void initState() {
     super.initState();
     BlocProvider.of<IndustryBloc>(context).add(FetchIndustries());
   }
 
-  int _crossAxisCount(BuildContext context, Orientation orientation) {
+  double _calculateAspectRatio(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    if (orientation == Orientation.portrait) {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
       if (screenWidth < 600) {
-        return 2;
+        return 1.2; // Portrait aspect ratio
       } else {
-        return 1;
+        return 1.9; // Landscape aspect ratio
       }
     } else {
-      return 1;
+      return 1.5; // Landscape aspect ratio
+    }
+  }
+
+  double _calculateHeight(BuildContext context, double aspectRatio) {
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return 270; // Height for portrait mode
+    } else {
+      return 170; // Height for landscape mode
     }
   }
 
@@ -53,9 +59,10 @@ class _IndustryScreenState extends State<IndustryScreen> {
               } else if (state is IndustryLoaded) {
                 return OrientationBuilder(
                   builder: (context, orientation) {
-                    int crossAxisCount = _crossAxisCount(context, orientation);
+                    double aspectRatio = _calculateAspectRatio(context);
+                    double height = _calculateHeight(context, aspectRatio);
                     return SizedBox(
-                      height: 270,
+                      height: height,
                       width: double.infinity,
                       child: GridView.builder(
                         scrollDirection: Axis.horizontal,
@@ -63,9 +70,9 @@ class _IndustryScreenState extends State<IndustryScreen> {
                         padding: const EdgeInsets.all(12),
                         itemCount: state.industries.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: crossAxisCount,
+                          crossAxisCount: _crossAxisCount(context),
                           crossAxisSpacing: 26,
-                          childAspectRatio: 1.2,
+                          childAspectRatio: aspectRatio,
                         ),
                         itemBuilder: (context, index) {
                           return IndustryTileWidget(
@@ -87,5 +94,18 @@ class _IndustryScreenState extends State<IndustryScreen> {
         ],
       ),
     );
+  }
+
+  int _crossAxisCount(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      if (screenWidth < 600) {
+        return 2;
+      } else {
+        return 1;
+      }
+    } else {
+      return 1;
+    }
   }
 }

@@ -7,7 +7,7 @@ import 'bloc/mentors_bloc.dart';
 import 'model/mentors_model.dart';
 
 class MentorsScreen extends StatefulWidget {
-  const MentorsScreen({super.key});
+  const MentorsScreen({super.key, required List<dynamic> mentors});
 
   @override
   State<MentorsScreen> createState() => _MentorsScreenState();
@@ -215,3 +215,7 @@ class _MentorsScreenState extends State<MentorsScreen> {
     );
   }
 }
+
+
+
+

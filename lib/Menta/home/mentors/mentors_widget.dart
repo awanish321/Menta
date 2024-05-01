@@ -124,13 +124,23 @@ class _MentorsScreenState extends State<MentorsScreen> {
                               padding: const EdgeInsets.all(5.0),
                               child: Column(
                                 children: [
+                                  // Text(
+                                  //   mentor.roles.toString(),
+                                  //   maxLines: 2,
+                                  //   overflow: TextOverflow.ellipsis,
+                                  //   style: const TextStyle(fontSize: 14),
+                                  //   textAlign: TextAlign.center,
+                                  // ),
+
                                   Text(
-                                    mentor.role,
+                                    mentor.roles.isNotEmpty ? mentor.roles.join(' | ') : 'No roles available',
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(fontSize: 14),
                                     textAlign: TextAlign.center,
                                   ),
+
+
                                   // const Gap(4),
                                   const Divider(),
                                   // const Gap(4),
@@ -143,7 +153,8 @@ class _MentorsScreenState extends State<MentorsScreen> {
                                       children: [
                                         Expanded(
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                             children: [
                                               Row(
                                                 children: [
@@ -155,7 +166,8 @@ class _MentorsScreenState extends State<MentorsScreen> {
                                                   Expanded(
                                                     child: Text(
                                                       mentor.domain,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                      TextOverflow.ellipsis,
                                                       maxLines: 2,
                                                       style: const TextStyle(
                                                           fontSize: 13),

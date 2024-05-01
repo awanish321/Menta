@@ -45,7 +45,7 @@ class HotSkillsWidget extends StatelessWidget {
                 builder: (context, constraints) {
                   final double availableWidth = constraints.maxWidth;
                   final double itemWidth = (availableWidth / 3);
-                  final double itemSpacing = (availableWidth - (itemWidth * 4)) / 9 + 20;
+                  final double itemSpacing = (availableWidth - (itemWidth * 4)) / 13 + 20;
                   final int itemCount = hotSkills.length;
 
                   return Wrap(

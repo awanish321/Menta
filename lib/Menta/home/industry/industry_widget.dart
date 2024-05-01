@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/industry_bloc.dart';
 import 'industry_tile_widget.dart';
 
-
 class IndustryScreen extends StatefulWidget {
-  const IndustryScreen({super.key});
+  const IndustryScreen({Key? key}) : super(key: key);
 
   @override
   State<IndustryScreen> createState() => _IndustryScreenState();
@@ -20,9 +19,17 @@ class _IndustryScreenState extends State<IndustryScreen> {
     BlocProvider.of<IndustryBloc>(context).add(FetchIndustries());
   }
 
-  int _crossAxisCount(BuildContext context) {
+  int _crossAxisCount(BuildContext context, Orientation orientation) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return (screenWidth / 100).round();
+    if (orientation == Orientation.portrait) {
+      if (screenWidth < 600) {
+        return 2;
+      } else {
+        return 1;
+      }
+    } else {
+      return 1;
+    }
   }
 
   @override
@@ -44,20 +51,21 @@ class _IndustryScreenState extends State<IndustryScreen> {
               if (state is IndustryLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is IndustryLoaded) {
-                return SizedBox(
-                  height: 270,
-                  width: double.infinity,
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return GridView.builder(
+                return OrientationBuilder(
+                  builder: (context, orientation) {
+                    int crossAxisCount = _crossAxisCount(context, orientation);
+                    return SizedBox(
+                      height: 270,
+                      width: double.infinity,
+                      child: GridView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         padding: const EdgeInsets.all(12),
                         itemCount: state.industries.length,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 30,
-                          childAspectRatio: 1.2, //
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 26,
+                          childAspectRatio: 1.2,
                         ),
                         itemBuilder: (context, index) {
                           return IndustryTileWidget(
@@ -65,9 +73,9 @@ class _IndustryScreenState extends State<IndustryScreen> {
                             imageUrl: state.industries[index]['iconUrl']!,
                           );
                         },
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 );
               } else if (state is IndustryError) {
                 return Center(child: Text(state.error));
@@ -81,6 +89,3 @@ class _IndustryScreenState extends State<IndustryScreen> {
     );
   }
 }
-
-
-

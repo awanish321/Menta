@@ -18,19 +18,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SearchField(),
-            Gap(16),
-            IndustryScreen(),
-            Gap(16),
-            MentorsScreen(),
-            Gap(16),
-            HotSkillsWidget(),
-            Gap(16),
-            TrendingJobsScreen()
-          ],
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SearchField(mentors: [],),
+              Gap(16),
+              IndustryScreen(),
+              Gap(16),
+              MentorsScreen(),
+              Gap(16),
+              HotSkillsWidget(),
+              Gap(16),
+              TrendingJobsScreen()
+            ],
+          ),
         ),
       ),
     );

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "319897379984",
+    "firebase_url": "https://menta-32e34-default-rtdb.firebaseio.com",
+    "project_id": "menta-32e34",
+    "storage_bucket": "menta-32e34.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319897379984:android:5737453f8fe25936b8a415",
+        "android_client_info": {
+          "package_name": "com.example.courses"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWwjz3y38uDTNnY-fXp77uLDSZ6JCDnIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,6 @@
 import 'package:courses/Menta/home/trending_jobs/repository/trending_jobs_repository.dart';
 import 'package:courses/menta/home/components/trending_job_details_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/trending_jobs_bloc.dart';
 

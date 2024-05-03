@@ -13,7 +13,6 @@ class _CreateReelState extends State<CreateReel> {
   Widget build(BuildContext context) {
     final brightness = MediaQuery.platformBrightnessOf(context);
     final isDarkMode = brightness == Brightness.dark;
-    Color textColor = isDarkMode ? Colors.white : Colors.black;
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: SingleChildScrollView(

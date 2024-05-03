@@ -43,9 +43,8 @@
 import 'package:flutter/material.dart';
 
 class SearchField extends StatelessWidget {
-  final Function(String) onChanged;
 
-  const SearchField({Key? key, required this.onChanged}) : super(key: key);
+  const SearchField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,6 @@ class SearchField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: TextFormField(
-          onChanged: onChanged,
           decoration: InputDecoration(
             hintStyle: const TextStyle(fontSize: 14),
             hintText: 'Search mentors by name, title, company',

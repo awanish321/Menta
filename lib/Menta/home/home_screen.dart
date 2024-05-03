@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         mentors = fetchedMentors;
       });
     } catch (e) {
-      print('Error fetching mentors: $e');
+      debugPrint('Error fetching mentors: $e');
       // Handle error gracefully, show snackbar, retry, etc.
     }
   }
@@ -95,15 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SearchField(onChanged: filterMentors),
-              Gap(16),
+              SearchField(),
+              const Gap(16),
               const IndustryScreen(),
-              Gap(16),
+              const Gap(16),
               MentorsScreen(mentors: mentors),
-              Gap(16),
-              HotSkillsWidget(),
-              Gap(16),
-              TrendingJobsScreen()
+              const Gap(16),
+              const HotSkillsWidget(),
+              const Gap(16),
+              const TrendingJobsScreen()
             ],
           ),
         ),

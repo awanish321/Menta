@@ -1,3 +1,4 @@
+import 'package:courses/Menta/home/components/bottom_navigation_bar.dart';
 import 'package:courses/Menta/home/hot_skills/bloc/hot_skills_bloc.dart';
 import 'package:courses/Menta/home/hot_skills/repository/hot_skills_repository.dart';
 import 'package:courses/Menta/home/trending_jobs/bloc/trending_jobs_bloc.dart';
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme),
         ),
-        home: const HomeScreen(),
+        home: const BottomNavBar(
+        ),
       ),
     );
   }
